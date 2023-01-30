@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.clinic.clinic.entity.Pet;
 import com.clinic.clinic.entity.User;
 
+/**
+ * @author priyanshu.goyal
+ *
+ */
 @Repository
 public interface PetRepository extends JpaRepository<Pet, Long> {
 	List<Pet> findByUser(User user);

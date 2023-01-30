@@ -48,15 +48,6 @@ public class UserService {
 	}
 
 	/**
-	 * This method is delete the user on the basis of id from the database
-	 * 
-	 * @param id
-	 */
-	public void deletePetById(Long id) {
-		userRepository.deleteById(id);
-	}
-
-	/**
 	 * This method find the all the existing users from the database
 	 * 
 	 * @return List<User>

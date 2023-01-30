@@ -37,7 +37,7 @@ public class User {
 	@Column(nullable = false, length = 64)
 	private String password;
 
-	@Column(name = "fullname", nullable = false, length = 20)
+	@Column(name = "fullname", nullable = false, length = 64)
 	private String fullname;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

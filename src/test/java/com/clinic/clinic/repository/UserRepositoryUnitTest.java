@@ -38,20 +38,11 @@ public class UserRepositoryUnitTest {
 		assertThat(existingUser.getFullname()).isEqualTo(user.getFullname());
 	}
 	
-	/*
-	 * @Test public void findByUserNameTest() { User user = new User("iyanshu",
-	 * "priyanshu", "priyanshu", Set.of(new Role("Admin"))); User result =
-	 * userRepo.save(user); User existingUser= entityManager.find(User.class,
-	 * result.getUsername());
-	 * assertThat(existingUser.getUsername()).isEqualTo(user.getUsername()); }
-	 */
 
 	@Test
 	public void testCreateUsers() {
 		User user = new User("Priyanshu", "priyanshu", "priyanshu", Set.of(new Role("Admin")));
-
 		User result = userRepo.save(user);
-
 		assertThat(result.getRoles().size()).isEqualTo(1);
 	}
 

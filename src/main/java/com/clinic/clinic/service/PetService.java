@@ -10,8 +10,8 @@ import com.clinic.clinic.entity.User;
 import com.clinic.clinic.repository.PetRepository;
 
 /**
- * This is the pet service which contains interact with user action from the
- * views and interact with database repository Its contain also the business
+ * This is the pet service which  interact with user action and returns the
+ * views/data and interact with database repository Its contain also the business
  * logic related to pet in the application
  * 
  * @author priyanshu.goyal
