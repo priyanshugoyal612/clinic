@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>List Users</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+
+		<div align="center">
+			<h1>Edit Form Pet</h1>
+			<form th:action="@{/update_pet}" th:object="${pet}" method="POST">
+			<input type ="hidden" th:field="*{id}">				
+			<table>
+					<tr>
+						<td>Pet Name</td>
+						<td><input type="text" th:field="*{name}" name="name" />
+					</tr>
+					<tr>
+						<td>Pet Type</td>
+						<td><select th:field="*{type}" class="form-control">
+								<option th:value="'DOG'" th:text="DOG"></option>
+								<option th:value="'CAT'" th:text="CAT"></option>
+								<option th:value="'BIRD'" th:text="BIRD"></option>
+						</select></td>
+					</tr>
+				</table>
+				<input type="submit" value="Update" />
+			</form>
+		</div>
+	</div>
+</body>
+</html>

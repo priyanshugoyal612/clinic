@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome to the Clinic</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container text-center">
+	   <div >
+        <form th:action="@{/logout}" method="post">
+            <p>
+            </p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+		<h1>Welcome to Clinic Vets And Pets</h1>
+		<h1>Hello Admin</h1>
+		<h3>
+			<a th:href="@{/admin/pets}">List of Pets</a>
+		</h3>
+		<h3>
+			<a th:href="@{/admin/statistic}">Statistic</a>
+		</h3>
+		<h3>
+			<a th:href="@{/registerpet}">Register A Pet</a>
+		</h3>
+		<h3>
+			<a th:href="@{/admin/users}">List of Users</a>
+		</h3>
+		<h3>
+			<a th:href="@{/name}">Edit My Name</a>
+		</h3>
+		
+	</div>
+	
+	
+
+</body>
+</html>

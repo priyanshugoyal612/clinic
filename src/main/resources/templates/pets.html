@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <p>
+            </p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+    <div>
+    <h3><a th:href="@{/clinic}">Clinic</a></h3>
+        <h1>List of Pets Registered</h1>
+    </div>
+     
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Pet Id</th>
+                    <th>Pet Name</th>
+                    <th>Pet Type</th>
+                    <th>User Name</th>
+                    <th> Action</th>
+                    <th>Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pet: ${listPets}">
+                    <td th:text="${pet.id}">Pet ID</td>
+                    <td th:text="${pet.name}">Pet Name</td>
+                    <td th:text="${pet.type}">Pet Type</td>
+                    <td th:text="${pet.user.username}">User Name</td>
+                    <td><a th:href="@{'/edit/'+${pet.id}}"  >edit</a></td>
+                    <td><a th:href="@{'/delete_pet/'+${pet.id}}" >delete</a></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

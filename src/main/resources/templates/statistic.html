@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Statistics</title>
+ <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <p>
+             Welcome <b></b>
+            </p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+    <a th:href="@{/admin}">Admin Home</a>
+
+ <div>
+ 
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Pet Type</th>
+                    <th>No Of Pets Registered</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td th:text="DOG">Pet Type</td>
+                    <td th:text="${DOG}? ${DOG} : '0'">Number</td>
+                </tr>
+                <tr >
+                    <td th:text="CAT">Pet Type</td>
+                    <td th:text="${CAT} ? ${CAT} : '0'">Number</td>
+                </tr>
+                <tr >
+                    <td th:text="BIRD">Pet Type</td>
+                    <td th:text="${BIRD} ? ${BIRD} : '0'" >Number</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

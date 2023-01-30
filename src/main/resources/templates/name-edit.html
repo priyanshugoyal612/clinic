@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container text-center">
+
+		<div align="center">
+			<h1>Edit My Name</h1>
+			<h3><a th:href="@{/clinic}">Clinic</a></h3>
+			<form th:action="@{/edit_name}" th:object="${user}" method="POST">
+				<table>
+					<tr>
+						<td>Full Name</td>
+						<td><input type="text" th:field="*{username}" name="username" />
+					</tr>
+				</table>
+				<input type="submit" value="Update" />
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
