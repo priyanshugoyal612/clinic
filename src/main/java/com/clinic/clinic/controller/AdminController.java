@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,8 @@ import com.clinic.clinic.service.UserService;
  */
 @Controller
 public class AdminController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
 	@Autowired
 	public PetService petService;
@@ -37,6 +41,7 @@ public class AdminController {
 
 	@GetMapping("/admin")
 	public String adminHome() {
+		logger.info("getting admin home page");
 		return "admin";
 	}
 
@@ -44,6 +49,7 @@ public class AdminController {
 	public String listAllPets(Model model) {
 		List<Pet> listPets = petService.findAllPets();
 		model.addAttribute("listPets", listPets);
+		logger.info("returning pets");
 		return "pets";
 	}
 
@@ -54,6 +60,7 @@ public class AdminController {
 		result.forEach((k, v) -> {
 			model.addAttribute(k.name(), v.size());
 		});
+		logger.info("getting statistic data");
 		return "statistic";
 	}
 
@@ -61,6 +68,7 @@ public class AdminController {
 	public String listUsers(Model model) {
 		List<User> listUsers = userService.findAllUsers();
 		model.addAttribute("listUsers", listUsers);
+		logger.info("getting users data");
 		return "users";
 	}
 
@@ -71,12 +79,14 @@ public class AdminController {
 		List<Role> listRoles = userService.listRoles();
 		editViewUser.addObject("listRoles", listRoles);
 		editViewUser.addObject("user", user);
+		logger.info("editing user data with id " + id);
 		return editViewUser;
 	}
 
 	@PostMapping(path = "admin/users/save")
 	public String updateUserData(User user) {
 		userService.updateUser(user);
+		logger.info("user is updated successfully");
 		return "redirect:/users";
 	}
 }

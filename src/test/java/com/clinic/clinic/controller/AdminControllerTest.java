@@ -83,5 +83,6 @@ public class AdminControllerTest {
 		ModelAndView modelAndView = controller.showEditFormUser(1L);
 		assertEquals("edit-user", modelAndView.getViewName());
 	}
+	
 
 }

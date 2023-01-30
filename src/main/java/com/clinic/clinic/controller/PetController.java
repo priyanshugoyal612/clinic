@@ -2,6 +2,8 @@ package com.clinic.clinic.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.clinic.clinic.entity.Pet;
 import com.clinic.clinic.entity.User;
 import com.clinic.clinic.service.PetService;
@@ -28,6 +29,7 @@ import com.clinic.clinic.service.UserService;
  */
 @Controller
 public class PetController {
+	private static final Logger logger = LoggerFactory.getLogger(PetController.class);
 
 	@Autowired
 	UserService userService;
@@ -50,6 +52,7 @@ public class PetController {
 		User user = userService.findByUsername(username);
 		List<Pet> listPets = petService.findByUser(user);
 		model.addAttribute("listPets", listPets);
+		logger.info("getting pets data");
 		return "pets";
 	}
 
@@ -62,6 +65,7 @@ public class PetController {
 	@GetMapping("/registerpet")
 	public String showRegistrationFormPet(Model model) {
 		model.addAttribute("pet", new Pet());
+		logger.info("getting pet registration form");
 		return "signup_form_pet";
 	}
 
@@ -79,6 +83,7 @@ public class PetController {
 		User user = userService.findByUsername(detail.getUsername());
 		pet.setUser(user);
 		petService.save(pet);
+		logger.info("successfully pet is registered with pet name " + pet.getName());
 		return "redirect:/pets";
 	}
 
@@ -94,6 +99,7 @@ public class PetController {
 		ModelAndView editView = new ModelAndView("edit-pets");
 		Pet pet = petService.findById(id);
 		editView.addObject("pet", pet);
+		logger.info("editing pet information");
 		return editView;
 	}
 
@@ -106,6 +112,7 @@ public class PetController {
 	@PostMapping("/update_pet")
 	public String updatePet(@ModelAttribute("pet") Pet pet) {
 		petService.update(pet);
+		logger.info("updating pet infor");
 		return "redirect:/pets";
 	}
 
@@ -118,6 +125,7 @@ public class PetController {
 	@GetMapping("/delete_pet/{id}")
 	public String deletePet(@PathVariable(name = "id") Long id) {
 		petService.deletePetById(id);
+		logger.info("pet  deleted successfully");
 		return "redirect:/pets";
 	}
 }
